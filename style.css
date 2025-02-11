@@ -10,6 +10,8 @@ body {
   height: 100vh;
   background-color: #1c1c1c;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -128,5 +130,17 @@ input[type="checkbox"] {
   padding: 16px;
   border-radius: 6px;
   color: #1f2937;
+  display: none;
+}
+
+input[type="text"] {
+  background-color: transparent;
+}
+
+.copied-text {
+  background-color: #a7f3d0;
+  padding: 8px;
+  position: absolute;
+  bottom: 100px;
   display: none;
 }

@@ -204,7 +204,7 @@ function renderPasswords() {
   const passwords = generatePassword();
   const errorMessage = document.querySelector(".error-message");
   errorMessage.style.display = "none";
-  console.log(passwords);
+  // console.log(passwords);
   if (passwords === undefined) {
     document.querySelector(".passwords").style.display = "none";
     errorMessage.style.display = "block";
@@ -216,3 +216,38 @@ function renderPasswords() {
     passwordTwoField.textContent = passwords[1];
   }
 }
+
+passwordOneField.addEventListener("click", function () {
+  // document.querySelector(".copied-text").style.display = "none";
+
+  let range = document.createRange();
+  let selection = window.getSelection();
+
+  selection.removeAllRanges();
+  range.selectNodeContents(this);
+  selection.addRange(range);
+
+  navigator.clipboard.writeText(passwordOneField.textContent);
+  document.querySelector(".copied-text").style.display = "block";
+  document.querySelector(
+    ".copied-text"
+  ).textContent = `Text Copied : ${passwordOneField.textContent}`;
+});
+
+passwordTwoField.addEventListener("click", function () {
+  // document.querySelector(".copied-text").style.display = "none";
+
+  let range = document.createRange();
+  let selection = window.getSelection();
+
+  selection.removeAllRanges();
+  range.selectNodeContents(this);
+  selection.addRange(range);
+
+  navigator.clipboard.writeText(passwordOneField.textContent);
+  document.querySelector(".copied-text").style.display = "block";
+
+  document.querySelector(
+    ".copied-text"
+  ).textContent = `Text Copied : ${passwordTwoField.textContent}`;
+});
