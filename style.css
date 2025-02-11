@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", serif;
+  height: 100vh;
+  background-color: #1c1c1c;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 550px;
+  margin: 0 auto;
+  background-color: #1f2937;
+  padding: 112px 120px 112px 48px;
+}
+
+.section-top {
+  border-bottom: 1px solid #2f3e53;
+  padding-bottom: 36px;
+}
+
+.heading-primary {
+  font-weight: 800;
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-family: "Karla", sans-serif;
+}
+
+span {
+  color: #4adf86;
+}
+
+.para-m {
+  font-size: 20px;
+  font-weight: 400;
+  /* line-height: 28px; */
+  margin-bottom: 56px;
+}
+.para-description {
+  color: #d5d4d8;
+}
+
+.btn-password {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #10b981;
+  color: #fff;
+}
+
+.section-bottom {
+  padding-top: 36px;
+}
+
+.passwords {
+  display: flex;
+  justify-content: space-between;
+}
+
+.para-sm {
+  font-size: 18px;
+  font-weight: 500;
+}
+.password {
+  color: #55f991;
+  background-color: #273549;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
