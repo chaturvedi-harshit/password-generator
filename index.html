@@ -13,6 +13,29 @@
         <p class="para-m para-description">
           Never use an insecure password again
         </p>
+        <div class="password-settings">
+          <div class="password-length-setting">
+            <label for="password-length-input">Password Length</label>
+            <input
+              type="number"
+              name="password-length"
+              id="password-length-input"
+              class="password-length-input"
+            />
+          </div>
+          <div class="password-toggle-symbol-setting toggles">
+            <label for="symbol-checkbox">Symbols</label>
+            <input type="checkbox" name="symbol-checkbx" id="symbol-checkbox" />
+          </div>
+          <div class="password-toggle-number-setting toggles">
+            <label for="number-checkbox">Numbers</label>
+            <input
+              type="checkbox"
+              name="number-checkbox"
+              id="number-checkbox"
+            />
+          </div>
+        </div>
         <button class="btn-password btn" id="generate-password-btn">
           Generate Passwords
         </button>
@@ -31,6 +54,7 @@
           ></p>
         </div>
       </section>
+      <p class="error-message"></p>
     </div>
     <script src="app.js"></script>
   </body>

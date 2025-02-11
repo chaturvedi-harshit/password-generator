@@ -94,29 +94,117 @@ const characters = [
   "/",
 ];
 
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const symbols = [
+  "~",
+  "`",
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "_",
+  "-",
+  "+",
+  "=",
+  "{",
+  "[",
+  "}",
+  "]",
+  ",",
+  "|",
+  ":",
+  ";",
+  "<",
+  ">",
+  ".",
+  "?",
+  "/",
+];
+
 const generatePasswordBtn = document.getElementById("generate-password-btn");
 const passwordOneField = document.getElementById("password-1");
 const passwordTwoField = document.getElementById("password-2");
+const passwordLengthInput = document.querySelector("#password-length-input");
+const symbolToggle = document.querySelector("#symbol-checkbox");
+const numberToggle = document.querySelector("#number-checkbox");
 
 generatePasswordBtn.addEventListener("click", renderPasswords);
 
-function generatePassword(length) {
+function generatePassword() {
+  let passwordLength = Number(passwordLengthInput.value);
+  console.log("length " + passwordLength);
   let passwordOne = "";
   let passwordTwo = "";
-  for (let i = 0; i < length; i++) {
-    passwordOne += characters[Math.floor(Math.random() * characters.length)];
-    passwordTwo += characters[Math.floor(Math.random() * characters.length)];
+  if (passwordLength <= 7 || passwordLength > 50) {
+    return;
   }
+  if (passwordLength > 0 && passwordLength <= 50) {
+    for (let i = 0; i < passwordLength; i++) {
+      if (symbolToggle.checked === true && numberToggle.checked === true) {
+        let randomCharOne =
+          characters[Math.floor(Math.random() * characters.length)];
+        let randomCharTwo =
+          characters[Math.floor(Math.random() * characters.length)];
+        passwordOne += randomCharOne;
+        passwordTwo += randomCharTwo;
+      }
 
+      if (symbolToggle.checked === true && numberToggle.checked === false) {
+        let randomCharOne, randomCharTwo;
+
+        do {
+          randomCharOne =
+            characters[Math.floor(Math.random() * characters.length)];
+        } while (numbers.includes(randomCharOne));
+
+        do {
+          randomCharTwo =
+            characters[Math.floor(Math.random() * characters.length)];
+        } while (numbers.includes(randomCharTwo));
+        passwordOne += randomCharOne;
+        passwordTwo += randomCharTwo;
+      }
+
+      if (symbolToggle.checked === false && numberToggle.checked === true) {
+        let randomCharOne, randomCharTwo;
+
+        do {
+          randomCharOne =
+            characters[Math.floor(Math.random() * characters.length)];
+        } while (symbols.includes(randomCharOne));
+
+        do {
+          randomCharTwo =
+            characters[Math.floor(Math.random() * characters.length)];
+        } while (symbols.includes(randomCharTwo));
+
+        passwordOne += randomCharOne;
+        passwordTwo += randomCharTwo;
+      }
+    }
+  }
   return [passwordOne, passwordTwo];
-  //   document.querySelector(".passwords").style.display = "flex";
-  //   passwordOneField.textContent = passwordOne;
-  //   passwordTwoField.textContent = passwordTwo;
 }
 
+//   document.querySelector(".passwords").style.display = "flex";
+//   passwordOneField.textContent = passwordOne;
+//   passwordTwoField.textContent = passwordTwo;
+
 function renderPasswords() {
-  const passwords = generatePassword(15);
-  document.querySelector(".passwords").style.display = "flex";
-  passwordOneField.textContent = passwords[0];
-  passwordTwoField.textContent = passwords[1];
+  const passwords = generatePassword();
+  console.log(passwords);
+  if (passwords === undefined) {
+    document.querySelector(".error-message").textContent =
+      "INCORRECT PASSWORD LENGTH";
+  } else {
+    document.querySelector(".passwords").style.display = "flex";
+    passwordOneField.textContent = passwords[0];
+    passwordTwoField.textContent = passwords[1];
+  }
 }
