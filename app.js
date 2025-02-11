@@ -94,13 +94,29 @@ const characters = [
   "/",
 ];
 
+const generatePasswordBtn = document.getElementById("generate-password-btn");
+const passwordOneField = document.getElementById("password-1");
+const passwordTwoField = document.getElementById("password-2");
+
+generatePasswordBtn.addEventListener("click", renderPasswords);
+
 function generatePassword(length) {
-  let password = "";
+  let passwordOne = "";
+  let passwordTwo = "";
   for (let i = 0; i < length; i++) {
-    password += characters[Math.floor(Math.random() * characters.length)];
+    passwordOne += characters[Math.floor(Math.random() * characters.length)];
+    passwordTwo += characters[Math.floor(Math.random() * characters.length)];
   }
-  return password;
+
+  return [passwordOne, passwordTwo];
+  //   document.querySelector(".passwords").style.display = "flex";
+  //   passwordOneField.textContent = passwordOne;
+  //   passwordTwoField.textContent = passwordTwo;
 }
 
-let passwordOne = generatePassword(15);
-let passwordTwo = generatePassword(15);
+function renderPasswords() {
+  const passwords = generatePassword(15);
+  document.querySelector(".passwords").style.display = "flex";
+  passwordOneField.textContent = passwords[0];
+  passwordTwoField.textContent = passwords[1];
+}
