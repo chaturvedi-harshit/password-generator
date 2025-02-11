@@ -138,7 +138,6 @@ generatePasswordBtn.addEventListener("click", renderPasswords);
 
 function generatePassword() {
   let passwordLength = Number(passwordLengthInput.value);
-  console.log("length " + passwordLength);
   let passwordOne = "";
   let passwordTwo = "";
   if (passwordLength <= 7 || passwordLength > 50) {
@@ -204,7 +203,7 @@ function renderPasswords() {
   const passwords = generatePassword();
   const errorMessage = document.querySelector(".error-message");
   errorMessage.style.display = "none";
-  // console.log(passwords);
+
   if (passwords === undefined) {
     document.querySelector(".passwords").style.display = "none";
     errorMessage.style.display = "block";
