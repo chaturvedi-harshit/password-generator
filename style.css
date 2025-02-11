@@ -30,7 +30,7 @@ body {
   font-weight: 800;
   font-size: 40px;
   color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-family: "Karla", sans-serif;
 }
 
@@ -67,6 +67,7 @@ label {
   font-size: 16px;
   color: #10b981;
   flex: 1;
+  font-family: "Karla", sans-serif;
 }
 
 input {
@@ -120,4 +121,12 @@ input[type="checkbox"] {
   background-color: #273549;
   padding: 8px 16px;
   border-radius: 6px;
+}
+
+.error-message {
+  background: #fda4af;
+  padding: 16px;
+  border-radius: 6px;
+  color: #1f2937;
+  display: none;
 }

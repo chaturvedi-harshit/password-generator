@@ -187,6 +187,10 @@ function generatePassword() {
         passwordOne += randomCharOne;
         passwordTwo += randomCharTwo;
       }
+
+      if (symbolToggle.checked === false && numberToggle.checked === false) {
+        return;
+      }
     }
   }
   return [passwordOne, passwordTwo];
@@ -198,10 +202,14 @@ function generatePassword() {
 
 function renderPasswords() {
   const passwords = generatePassword();
+  const errorMessage = document.querySelector(".error-message");
+  errorMessage.style.display = "none";
   console.log(passwords);
   if (passwords === undefined) {
-    document.querySelector(".error-message").textContent =
-      "INCORRECT PASSWORD LENGTH";
+    document.querySelector(".passwords").style.display = "none";
+    errorMessage.style.display = "block";
+    errorMessage.textContent =
+      "Check your inputs. Password length should be between 8-50 and one of the checkboxes should be toggled";
   } else {
     document.querySelector(".passwords").style.display = "flex";
     passwordOneField.textContent = passwords[0];
